@@ -1,32 +1,25 @@
-// STEP 2: Refactor Functions
+// STEP 3: Use Methods Instead
 /** get rid of arrays & use obj to keep track of state:
 const taskTitles = [];
 const taskComplete = [];
 const taskDescriptions = [];
 **/
+
+// task functions are reading or updating state of task = behaviours of task; should be methods on stask
 function newTask(title, description) {
-  //taskTitles.push(title);
-  //taskDescriptions.push(description);
-  //taskComplete.push(false);
   const task = {
     title: title,
     description: description,
-    complete: false
+    complete: false,
+
+    markCompleted: function() {
+      this.complete = true;
+    },
+    logState: function() {
+      console.log(`${task.title} has${task.complete ? " " : " not "}been completed`);
+    }
   };
   return task;
-}
-
-// Mark a task as complete
-function completeTask(task/*Index*/) {
-  //taskComplete[taskIndex] = true;
-  task.complete = true; // refactor
-}
-
-// Print the state of a task to the console in a nice readable way
-function logTaskState(task/*Index*/) {
-  //const title = taskTitles[taskIndex];
-  //const complete = taskComplete[taskIndex];
-  console.log(`${task.title} has${task.complete ? " " : " not "}been completed`); // refactor
 }
 
 // DRIVER CODE BELOW
@@ -38,8 +31,6 @@ const tasks = [task1, task2];
 // newTask("Clean Cat Litter"); // task 0
 // newTask("Do Laundry"); // task 1
 
-logTaskState(task1); // Clean Cat Litter has not been completed
-completeTask(task1);
-logTaskState(task1); // Clean Cat Litter has been completed
-
-console.log(tasks);
+task1.logState(); // Clean Cat Litter has not been completed
+task1.markCompleted();
+task1.logState(); // Clean Cat Litter has been completed
