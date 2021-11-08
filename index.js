@@ -1,12 +1,8 @@
-// Arrays to keep track of each task's state
-// STEP 1: introduce Task Obj
+// STEP 2: Refactor Functions
 /** get rid of arrays & use obj to keep track of state:
 const taskTitles = [];
 const taskComplete = [];
-const taskDescriptions = []; //create new description array to allow each task to have description & mod newTak func
-
-// Create a new task by adding to the arrays
-// A new task will be created as incomplete
+const taskDescriptions = [];
 **/
 function newTask(title, description) {
   //taskTitles.push(title);
@@ -20,7 +16,7 @@ function newTask(title, description) {
   return task;
 }
 
-// Mark a task as complete by setting the task's status in the `taskComplete` array to `true`
+// Mark a task as complete
 function completeTask(task/*Index*/) {
   //taskComplete[taskIndex] = true;
   task.complete = true; // refactor
